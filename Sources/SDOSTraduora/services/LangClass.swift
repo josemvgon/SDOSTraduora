@@ -138,12 +138,12 @@ final class LangClass {
         var lineFinal = line
         
 //        lineFinal = lineFinal.replacingOccurrences(of: "%", with: "%%")
-        lineFinal = lineFinal.replacingOccurrences(of: "%s", with: "%@")
         lineFinal = lineFinal.replacingOccurrences(of: "\"", with: "\\\"")
         lineFinal = lineFinal.replacingOccurrences(of: "\n", with: "\\n")
         lineFinal = lineFinal.replaceRegexNumber()
         lineFinal = lineFinal.replaceRegexDecimal()
         lineFinal = lineFinal.replaceRegexString()
+        lineFinal = lineFinal.replacingOccurrences(of: "%s", with: "%@")
 
         return lineFinal
     }
