@@ -143,7 +143,7 @@ final class LangClass {
         lineFinal = lineFinal.replaceRegexNumber()
         lineFinal = lineFinal.replaceRegexDecimal()
         lineFinal = lineFinal.replaceRegexString()
-        lineFinal = lineFinal.replacingOccurrences(of: "%s", with: "%@")
+//        lineFinal = lineFinal.replacingOccurrences(of: "%s", with: "%@")
 
         return lineFinal
     }
