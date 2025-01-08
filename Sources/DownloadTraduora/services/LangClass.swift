@@ -61,7 +61,7 @@ final public class LangClass {
         }
     }
     
-    public func download(server: String?, project: String, language: String, output: String, fileName: String, label: String? = nil) throws {
+    public func download(server: String?, project: String, language: String, output: String, fileName: String, label: String? = nil, format. String? = nil) throws {
         let semaphore = DispatchSemaphore(value: 0)
         var errorWS: Error? = nil
         
@@ -69,7 +69,7 @@ final public class LangClass {
 
         components.queryItems = [
             URLQueryItem(name: Constants.ws.query.locale, value: language),
-            URLQueryItem(name: Constants.ws.query.format, value: Constants.ws.query.value.jsonNested)
+            URLQueryItem(name: Constants.ws.query.format, value: format ?? Constants.ws.query.value.jsonNested)
         ]
         
         components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
@@ -157,7 +157,11 @@ final public class LangClass {
         
         var lineFinal = line
         
-        lineFinal = lineFinal.replacingOccurrences(of: "%", with: "%%")
+        #warning("Removed because Oysho Training App")
+//        lineFinal = lineFinal.replacingOccurrences(of: "%", with: "%%")
+        #warning("Added because Oysho Training App")
+        lineFinal = lineFinal.replacingOccurrences(of: "%s", with: "%@")
+        
         lineFinal = lineFinal.replacingOccurrences(of: "\"", with: "\\\"")
         lineFinal = lineFinal.replacingOccurrences(of: "\n", with: "\\n")
         lineFinal = lineFinal.replaceRegexNumber()

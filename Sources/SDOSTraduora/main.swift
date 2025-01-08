@@ -10,6 +10,7 @@ struct SDOSTraduora: ParsableCommand {
     @Option(name: [.customShort("s"), .long], help: "Client_secret api created in traduora.") var clientSecret: String
     @Option(name: [.customShort("i"), .long], help: "Project id from traduora") var projectId: String
     @Option(name: [.long], help: "Traduora domain server (For example: traduora.sdos.es") var server: String?
+    @Option(name: [.long], help: "Format of export: androidxml, csv, xliff12, jsonflat, jsonnested, yamlflat, yamlnested, properties, po, strings") var format: String?
     
     @Option(name: [.customShort("o"), .customLong("output-path")], help: "Desired output path for generated files.") var output: String
     @Option(name: [.customShort("f"), .customLong("output-file-name")], help: "Desired file name for generated files.") var outputFileName: String
@@ -28,7 +29,7 @@ struct SDOSTraduora: ParsableCommand {
     
     func downloadLang(language: String) throws {
         print("[SDOSTraduora] Descargando idioma \(language)...")
-        try LangClass.shared.download(server: server, project: self.projectId, language: language, output: self.output, fileName: outputFileName, label: self.label)
+        try LangClass.shared.download(server: server, project: self.projectId, language: language, output: self.output, fileName: outputFileName, label: self.label, format: self.format)
     }
     
     mutating func getLangs() throws {
